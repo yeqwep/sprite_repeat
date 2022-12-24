@@ -1,0 +1,11 @@
+function init(self)
+	self.time = 0
+	local scale = go.get_scale()
+	sprite.set_constant("#sprite", "scale", vmath.vector4(scale.x, scale.y, 1, 1))
+	sprite.set_constant("#sprite", "offset", vmath.vector4(self.time, 0, 0, 0))
+end
+
+function update(self,dt)
+	self.time = self.time + dt
+	sprite.set_constant("#sprite", "offset", vmath.vector4(-self.time, -self.time/2, 0, 0))
+end
